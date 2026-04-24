@@ -16,7 +16,7 @@ export const SUBSCRIPTIONS: Subscription[] = [
   { id: "headspace", name: "Headspace", category: "health", defaultMonthlyPrice: 12.99, dealId: "headspace" },
   { id: "nytimes", name: "New York Times", category: "education", defaultMonthlyPrice: 17, dealId: "nytimes" },
   { id: "wsj", name: "Wall Street Journal", category: "education", defaultMonthlyPrice: 38.99, dealId: "wsj" },
-  { id: "chegg", name: "Chegg Study", category: "education", defaultMonthlyPrice: 15.95, dealId: "chegg" },
+  { id: "chegg", name: "Chegg Study", category: "education", defaultMonthlyPrice: 15.95, dealId: null },
 ];
 
 export function calculateAuditResult(
