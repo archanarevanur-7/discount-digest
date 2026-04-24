@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Discount Digest — Student & Grad Deals",
     description:
-      "The average working grad student overpays $1,764/year. We'll show you exactly where your money is going.",
+      "You're juggling work, school, and everything in between. Stop paying full price for tools your student status already unlocks.",
     type: "website",
   },
 };

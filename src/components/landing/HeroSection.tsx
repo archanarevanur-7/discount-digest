@@ -27,10 +27,9 @@ export default function HeroSection() {
         </h1>
 
         <p className="text-lg sm:text-xl text-zinc-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-          The average working grad student overpays{" "}
-          <strong className="text-zinc-800">$1,764/year</strong> on tools and subscriptions
-          they could get free — or close to it. We&apos;ll show you exactly where your money is
-          going.
+          You&apos;re juggling work, school, and everything in between. The last thing you
+          should be doing is paying full price for tools your student status already
+          unlocks — if only the process wasn&apos;t so exhausting to figure out.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">

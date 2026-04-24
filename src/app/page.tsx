@@ -13,18 +13,17 @@ export default function HomePage() {
       <LifeAuditTeaser />
       <SampleDeals deals={featuredDeals} />
 
-      {/* Social proof strip */}
+      {/* Values strip */}
       <section className="bg-zinc-900 text-white py-12 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
           {[
-            { stat: "20+", label: "Verified deals" },
-            { stat: "$1,764", label: "Avg. annual savings" },
-            { stat: "100%", label: "Free, always" },
-            { stat: "2 min", label: "Life audit" },
-          ].map(({ stat, label }) => (
-            <div key={label}>
-              <p className="text-2xl sm:text-3xl font-bold text-emerald-400">{stat}</p>
-              <p className="text-sm text-zinc-400 mt-1">{label}</p>
+            { emoji: "🔍", label: "We find it so you don't have to" },
+            { emoji: "🚀", label: "Direct links — not landing pages" },
+            { emoji: "🆓", label: "Free, always. No catch." },
+          ].map(({ emoji, label }) => (
+            <div key={label} className="flex flex-col items-center gap-2">
+              <span className="text-2xl">{emoji}</span>
+              <p className="text-sm text-zinc-300 font-medium">{label}</p>
             </div>
           ))}
         </div>
