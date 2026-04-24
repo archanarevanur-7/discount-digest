@@ -1,0 +1,79 @@
+import { DEALS, getAllCategories } from "@/lib/deals-data";
+import { DealCategory } from "@/types";
+import CategoryFilter from "@/components/deals/CategoryFilter";
+import DealGrid from "@/components/deals/DealGrid";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+interface DealsPageProps {
+  searchParams: Promise<{ category?: string }>;
+}
+
+export default async function DealsPage({ searchParams }: DealsPageProps) {
+  const params = await searchParams;
+  const categories = getAllCategories();
+  const activeCategory: DealCategory | "all" = (params.category as DealCategory) ?? "all";
+
+  const filteredDeals =
+    activeCategory === ("all" as string)
+      ? DEALS
+      : DEALS.filter((d) => d.category === activeCategory);
+
+  const dealCounts: Partial<Record<DealCategory | "all", number>> = {
+    all: DEALS.length,
+  };
+  for (const cat of categories) {
+    dealCounts[cat] = DEALS.filter((d) => d.category === cat).length;
+  }
+
+  const unlockedCount = filteredDeals.filter((d) => !d.isLocked).length;
+  const lockedCount = filteredDeals.filter((d) => d.isLocked).length;
+
+  return (
+    <div className="pt-24 pb-20">
+      {/* Header */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-10">
+        <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-3">
+          Student Deals
+        </h1>
+        <p className="text-zinc-500 text-lg max-w-2xl">
+          {DEALS.length} deals across {categories.length} categories.{" "}
+          {unlockedCount} free to view right now.{" "}
+          {lockedCount > 0 && (
+            <span>
+              <a href="/#email-capture" className="text-emerald-600 font-medium hover:underline">
+                Enter your .edu
+              </a>{" "}
+              to unlock {lockedCount} more.
+            </span>
+          )}
+        </p>
+      </div>
+
+      {/* Filters */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
+        <CategoryFilter activeCategory={activeCategory} dealCounts={dealCounts} />
+      </div>
+
+      {/* Grid */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <DealGrid deals={filteredDeals} />
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-14 text-center">
+        <div className="bg-zinc-50 rounded-2xl p-8 sm:p-12">
+          <h2 className="text-2xl font-bold text-zinc-900 mb-2">
+            Not sure which ones apply to you?
+          </h2>
+          <p className="text-zinc-500 mb-6">
+            Take the 2-minute Life Audit and see exactly how much you&#39;re overpaying.
+          </p>
+          <Button asChild size="lg">
+            <Link href="/audit">Take the Life Audit →</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
