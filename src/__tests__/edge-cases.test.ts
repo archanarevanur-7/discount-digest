@@ -68,7 +68,7 @@ describe("Email validation — security and injection inputs", () => {
 // ─── GROUP 3: Deals data integrity (tests 31–50) ──────────────────────────────
 
 describe("Deals data — structural integrity", () => {
-  it("31. DEALS has exactly 19 items", () => expect(DEALS).toHaveLength(19));
+  it("31. DEALS has at least 25 items (expanded catalog)", () => expect(DEALS.length).toBeGreaterThanOrEqual(25));
   it("32. all deal IDs are unique", () => {
     const ids = DEALS.map((d) => d.id);
     expect(new Set(ids).size).toBe(ids.length);
@@ -152,8 +152,8 @@ describe("Deals helper functions", () => {
   it("54. getDealsByCategory('education') returns only education deals", () => {
     getDealsByCategory("education").forEach((d) => expect(d.category).toBe("education"));
   });
-  it("55. getDealsByCategory('food') returns empty array — no food deals exist", () => {
-    expect(getDealsByCategory("food")).toHaveLength(0);
+  it("55. getDealsByCategory('food') returns at least 1 deal", () => {
+    expect(getDealsByCategory("food").length).toBeGreaterThanOrEqual(1);
   });
   it("56. getDealsByCategory('travel') returns empty array — no travel deals exist", () => {
     expect(getDealsByCategory("travel")).toHaveLength(0);
@@ -161,12 +161,11 @@ describe("Deals helper functions", () => {
   it("57. getFeaturedDeals(3) returns exactly 3 deals", () => {
     expect(getFeaturedDeals(3)).toHaveLength(3);
   });
-  it("58. getFeaturedDeals() returns only unlocked deals", () => {
-    getFeaturedDeals(100).forEach((d) => expect(d.isLocked).toBe(false));
+  it("58. getFeaturedDeals(5) returns exactly 5 deals", () => {
+    expect(getFeaturedDeals(5)).toHaveLength(5);
   });
-  it("59. getFeaturedDeals(999) does not exceed total unlocked count", () => {
-    const unlocked = DEALS.filter((d) => !d.isLocked).length;
-    expect(getFeaturedDeals(999).length).toBeLessThanOrEqual(unlocked);
+  it("59. getFeaturedDeals(999) returns all deals without exceeding total count", () => {
+    expect(getFeaturedDeals(999).length).toBeLessThanOrEqual(DEALS.length);
   });
   it("60. getAllCategories returns no duplicates", () => {
     const cats = getAllCategories();
@@ -231,7 +230,6 @@ describe("Audit calculation — edge cases", () => {
   });
   it("70. breakdown length equals number of matched selections", () => {
     const r = calculateAuditResult(allSelected, true);
-    // breakdown only includes selections whose subscriptionId exists in SUBSCRIPTIONS
     const validCount = allSelected.filter((s) =>
       SUBSCRIPTIONS.some((sub) => sub.id === s.subscriptionId)
     ).length;
@@ -271,7 +269,7 @@ describe("Audit calculation — edge cases", () => {
       .reduce((acc, s) => acc + s.currentMonthlyPrice, 0);
     expect(r.totalCurrentSpend).toBeCloseTo(expected, 5);
   });
-  it("76. all 14 subscriptions selected at once — no crash", () => {
+  it("76. all subscriptions selected at once — no crash", () => {
     expect(() => calculateAuditResult(allSelected, true)).not.toThrow();
   });
   it("77. SUBSCRIPTIONS has no duplicate IDs", () => {
@@ -308,15 +306,11 @@ describe("Routing and URL defensive checks", () => {
       expect(dealIds.has(s.dealId!)).toBe(true)
     );
   });
-  it("83. locked deals count + unlocked deals count = total deals count", () => {
-    const locked = DEALS.filter((d) => d.isLocked).length;
-    const unlocked = DEALS.filter((d) => !d.isLocked).length;
-    expect(locked + unlocked).toBe(DEALS.length);
+  it("83. total deal count is greater than 20 (expanded catalog)", () => {
+    expect(DEALS.length).toBeGreaterThan(20);
   });
-  it("84. at least as many locked deals as unlocked (incentivises signup)", () => {
-    const locked = DEALS.filter((d) => d.isLocked).length;
-    const unlocked = DEALS.filter((d) => !d.isLocked).length;
-    expect(locked).toBeGreaterThanOrEqual(unlocked);
+  it("84. food category deals exist (DoorDash DashPass)", () => {
+    expect(getDealsByCategory("food").length).toBeGreaterThanOrEqual(1);
   });
   it("85. valid categories from getAllCategories are all present in DEALS", () => {
     const cats = getAllCategories();
@@ -325,10 +319,9 @@ describe("Routing and URL defensive checks", () => {
     );
   });
   it("86. unknown category produces 0 filtered deals (graceful empty state)", () => {
-    // Simulates what the deals page does when an invalid ?category= is passed
     const invalid = "unicorn" as any;
     const result = DEALS.filter((d) => d.category === invalid);
-    expect(result).toHaveLength(0); // empty array, not a crash
+    expect(result).toHaveLength(0);
   });
   it("87. all deal brands are unique — no duplicate product listings", () => {
     const brands = DEALS.map((d) => d.brand);

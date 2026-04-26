@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
 import { TrendingDown, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface StepSavingsReportProps {
   result: AuditResult;
-  onContinue: () => void;
 }
 
 function useCountUp(target: number, duration = 1200) {
@@ -33,7 +33,7 @@ function useCountUp(target: number, duration = 1200) {
   return value;
 }
 
-export default function StepSavingsReport({ result, onContinue }: StepSavingsReportProps) {
+export default function StepSavingsReport({ result }: StepSavingsReportProps) {
   const animatedMonthly = useCountUp(result.monthlySavings);
 
   if (result.monthlySavings === 0) {
@@ -46,8 +46,8 @@ export default function StepSavingsReport({ result, onContinue }: StepSavingsRep
             Based on your selections, you&apos;re either already claiming these discounts, or the items you selected don&apos;t have student deals available yet.
           </p>
         </div>
-        <Button onClick={onContinue} className="w-full" size="lg">
-          Get notified when new deals drop →
+        <Button asChild className="w-full" size="lg">
+          <Link href="/deals">Browse all deals →</Link>
         </Button>
       </div>
     );
@@ -118,12 +118,9 @@ export default function StepSavingsReport({ result, onContinue }: StepSavingsRep
         </CardContent>
       </Card>
 
-      <Button onClick={onContinue} className="w-full" size="lg">
-        Send me my savings report →
+      <Button asChild className="w-full" size="lg">
+        <Link href="/deals">Claim these deals now — it&apos;s free →</Link>
       </Button>
-      <p className="text-xs text-zinc-400 text-center">
-        We&apos;ll email you this report plus step-by-step claim instructions for each deal.
-      </p>
     </div>
   );
 }

@@ -22,7 +22,6 @@ export interface Deal {
   claimSteps: string[];
   verificationMethod: string;
   claimUrl: string;
-  isLocked: boolean;
   tags: string[];
 }
 

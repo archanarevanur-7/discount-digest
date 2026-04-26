@@ -16,26 +16,19 @@ export default function SampleDeals({ deals }: SampleDealsProps) {
             Here&apos;s what you&apos;re missing right now
           </h2>
           <p className="text-zinc-500">
-            No signup needed to look. These are real deals you can claim today.
+            No signup needed. These are real deals you can claim today — for free.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-          {/* Show first 5 unlocked freely */}
-          {deals.slice(0, 5).map((deal) => (
-            <DealCard key={deal.id} deal={deal} isLocked={false} />
+          {deals.map((deal) => (
+            <DealCard key={deal.id} deal={deal} />
           ))}
-
-          {/* 6th card shows a locked teaser */}
-          {deals[5] && <DealCard key={deals[5].id} deal={deals[5]} isLocked={true} />}
         </div>
 
         <div className="text-center">
-          <Button asChild size="lg" variant="outline" className="mr-4">
-            <Link href="/deals">Browse all 20 deals →</Link>
-          </Button>
           <Button asChild size="lg">
-            <a href="#email-capture">Unlock locked deals →</a>
+            <Link href="/deals">Browse all deals — no signup required →</Link>
           </Button>
         </div>
       </div>

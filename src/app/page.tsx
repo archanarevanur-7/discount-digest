@@ -2,10 +2,9 @@ import { DEALS } from "@/lib/deals-data";
 import HeroSection from "@/components/landing/HeroSection";
 import LifeAuditTeaser from "@/components/landing/LifeAuditTeaser";
 import SampleDeals from "@/components/landing/SampleDeals";
-import EmailCapture from "@/components/landing/EmailCapture";
 
 export default function HomePage() {
-  const featuredDeals = DEALS.filter((d) => !d.isLocked).slice(0, 6);
+  const featuredDeals = DEALS.slice(0, 6);
 
   return (
     <>
@@ -66,17 +65,10 @@ export default function HomePage() {
               That&apos;s exactly what Discount Digest fixes.
             </p>
             <p className="text-zinc-500 text-sm">
-              We research every discount, test every claim flow, and send you exact step-by-step
-              instructions so you can claim each one in under 5 minutes.
+              We research every discount, test every claim flow, and give you exact step-by-step
+              instructions so you can claim each one in under 5 minutes — no account required.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Email capture */}
-      <section id="email-capture" className="bg-zinc-50 py-20 px-4 sm:px-6 border-t border-zinc-100">
-        <div className="max-w-2xl mx-auto">
-          <EmailCapture />
         </div>
       </section>
     </>

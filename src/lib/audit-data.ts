@@ -16,6 +16,10 @@ export const SUBSCRIPTIONS: Subscription[] = [
   { id: "headspace", name: "Headspace", category: "health", defaultMonthlyPrice: 12.99, dealId: "headspace" },
   { id: "nytimes", name: "New York Times", category: "education", defaultMonthlyPrice: 17, dealId: "nytimes" },
   { id: "wsj", name: "Wall Street Journal", category: "education", defaultMonthlyPrice: 38.99, dealId: "wsj" },
+  { id: "hulu", name: "Hulu", category: "streaming", defaultMonthlyPrice: 17.99, dealId: "hulu" },
+  { id: "nordvpn", name: "NordVPN", category: "software", defaultMonthlyPrice: 11.99, dealId: "nordvpn" },
+  { id: "economist", name: "The Economist", category: "education", defaultMonthlyPrice: 22, dealId: "economist" },
+  { id: "doordash-dashpass", name: "DoorDash DashPass", category: "food", defaultMonthlyPrice: 9.99, dealId: "doordash-dashpass" },
 ];
 
 export function calculateAuditResult(

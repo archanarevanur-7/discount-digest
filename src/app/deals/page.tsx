@@ -31,9 +31,6 @@ export default async function DealsPage({ searchParams }: DealsPageProps) {
     dealCounts[cat] = DEALS.filter((d) => d.category === cat).length;
   }
 
-  const unlockedCount = filteredDeals.filter((d) => !d.isLocked).length;
-  const lockedCount = filteredDeals.filter((d) => d.isLocked).length;
-
   return (
     <div className="pt-24 pb-20">
       {/* Header */}
@@ -42,16 +39,7 @@ export default async function DealsPage({ searchParams }: DealsPageProps) {
           Student Deals
         </h1>
         <p className="text-zinc-500 text-lg max-w-2xl">
-          {DEALS.length} deals across {categories.length} categories.{" "}
-          {unlockedCount} free to view right now.{" "}
-          {lockedCount > 0 && (
-            <span>
-              <a href="/#email-capture" className="text-emerald-600 font-medium hover:underline">
-                Enter your .edu
-              </a>{" "}
-              to unlock {lockedCount} more.
-            </span>
-          )}
+          {DEALS.length} deals across {categories.length} categories. All free to view — no account required.
         </p>
       </div>
 
