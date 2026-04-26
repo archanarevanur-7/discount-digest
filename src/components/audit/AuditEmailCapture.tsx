@@ -5,7 +5,6 @@ import { AuditResult } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getEduEmailError } from "@/lib/email-validation";
-import { formatCurrency } from "@/lib/utils";
 import { CheckCircle2, Mail } from "lucide-react";
 
 interface AuditEmailCaptureProps {
@@ -59,7 +58,7 @@ export default function AuditEmailCapture({ auditResult, onSuccess }: AuditEmail
           </div>
         </div>
         <h2 className="text-xl font-bold text-zinc-900">
-          Send me my {formatCurrency(auditResult.annualSavings)}/year savings report
+          Send me my personalized savings report
         </h2>
         <p className="text-zinc-500 text-sm mt-2">
           We&apos;ll email you step-by-step claim instructions for each deal you qualify for.

@@ -35,7 +35,6 @@ function useCountUp(target: number, duration = 1200) {
 
 export default function StepSavingsReport({ result, onContinue }: StepSavingsReportProps) {
   const animatedMonthly = useCountUp(result.monthlySavings);
-  const animatedAnnual = useCountUp(result.annualSavings);
 
   if (result.monthlySavings === 0) {
     return (
@@ -72,9 +71,6 @@ export default function StepSavingsReport({ result, onContinue }: StepSavingsRep
         <p className="text-5xl font-bold text-emerald-700">
           {formatCurrency(animatedMonthly)}
           <span className="text-2xl font-medium text-emerald-600">/mo</span>
-        </p>
-        <p className="text-emerald-600 mt-2 font-semibold">
-          = {formatCurrency(animatedAnnual)} per year
         </p>
       </div>
 

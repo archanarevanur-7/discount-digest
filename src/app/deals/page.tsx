@@ -12,7 +12,12 @@ interface DealsPageProps {
 export default async function DealsPage({ searchParams }: DealsPageProps) {
   const params = await searchParams;
   const categories = getAllCategories();
-  const activeCategory: DealCategory | "all" = (params.category as DealCategory) ?? "all";
+  const requestedCategory = params.category;
+  const isValidCategory =
+    !requestedCategory || (categories as string[]).includes(requestedCategory);
+  const activeCategory: DealCategory | "all" = isValidCategory
+    ? ((requestedCategory as DealCategory) ?? "all")
+    : "all";
 
   const filteredDeals =
     activeCategory === ("all" as string)

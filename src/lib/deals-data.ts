@@ -176,7 +176,7 @@ export const DEALS: Deal[] = [
     ],
     verificationMethod: ".edu email",
     claimUrl: "https://www.canva.com/education/students/",
-    isLocked: false,
+    isLocked: true,
     tags: ["design", "graphics", "templates"],
   },
   {

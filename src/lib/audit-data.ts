@@ -35,8 +35,10 @@ export function calculateAuditResult(
 
     const currentPrice = selection.currentMonthlyPrice;
     const deal = sub.dealId ? (dealsMap.get(sub.dealId) ?? null) : null;
-    const studentPrice = isStudent && deal ? deal.studentPrice : currentPrice;
-    const savings = currentPrice - studentPrice;
+    const rawStudentPrice = isStudent && deal ? deal.studentPrice : currentPrice;
+    // Never let student price exceed what the user is actually paying
+    const studentPrice = Math.min(rawStudentPrice, currentPrice);
+    const savings = Math.max(0, currentPrice - studentPrice);
 
     totalCurrentSpend += currentPrice;
     totalStudentSpend += studentPrice;
