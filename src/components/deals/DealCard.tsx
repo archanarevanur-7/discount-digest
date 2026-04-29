@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Clock, AlertCircle } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
+import BrandLogo from "./BrandLogo";
 
 interface DealCardProps {
   deal: Deal;
@@ -23,11 +24,10 @@ export default function DealCard({ deal }: DealCardProps) {
   return (
     <Card className="h-full overflow-hidden transition-shadow hover:shadow-md">
       <CardContent className="p-5 flex flex-col gap-4 h-full">
+        {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span className="text-3xl" aria-label={deal.brand}>
-              {deal.logoEmoji}
-            </span>
+            <BrandLogo domain={deal.logoDomain} emoji={deal.logoEmoji} brand={deal.brand} />
             <div>
               <p className="font-semibold text-zinc-900 leading-tight">{deal.brand}</p>
               <p className="text-xs text-zinc-500 capitalize">{deal.category}</p>
@@ -38,11 +38,13 @@ export default function DealCard({ deal }: DealCardProps) {
           </Badge>
         </div>
 
+        {/* Headline */}
         <div>
           <p className="font-bold text-zinc-900 text-lg leading-snug">{deal.headline}</p>
           <p className="text-sm text-zinc-500 mt-1">{deal.description}</p>
         </div>
 
+        {/* Pricing */}
         <div className="flex items-center gap-3 text-sm">
           <span className="text-zinc-400 line-through">{formatCurrency(deal.fullPrice)}/mo</span>
           <span className="font-bold text-emerald-700 text-base">
@@ -55,11 +57,13 @@ export default function DealCard({ deal }: DealCardProps) {
           )}
         </div>
 
+        {/* Claim difficulty */}
         <div className={`inline-flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-full w-fit ${diff.color}`}>
           <DiffIcon className="h-3 w-3" />
           {diff.label}
         </div>
 
+        {/* CTA */}
         <div className="mt-auto pt-2">
           <Button variant="outline" size="sm" className="w-full" asChild>
             <a href={deal.claimUrl} target="_blank" rel="noopener noreferrer">

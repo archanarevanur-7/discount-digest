@@ -12,6 +12,7 @@ export interface Deal {
   id: string;
   brand: string;
   logoEmoji: string;
+  logoDomain: string;
   category: DealCategory;
   headline: string;
   fullPrice: number;
