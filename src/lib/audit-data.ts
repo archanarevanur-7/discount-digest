@@ -16,7 +16,10 @@ export const SUBSCRIPTIONS: Subscription[] = [
   { id: "headspace", name: "Headspace", category: "health", defaultMonthlyPrice: 12.99, dealId: "headspace" },
   { id: "nytimes", name: "New York Times", category: "education", defaultMonthlyPrice: 17, dealId: "nytimes" },
   { id: "wsj", name: "Wall Street Journal", category: "education", defaultMonthlyPrice: 38.99, dealId: "wsj" },
-  { id: "chegg", name: "Chegg Study", category: "education", defaultMonthlyPrice: 15.95, dealId: "chegg" },
+  { id: "hulu", name: "Hulu", category: "streaming", defaultMonthlyPrice: 17.99, dealId: "hulu" },
+  { id: "nordvpn", name: "NordVPN", category: "software", defaultMonthlyPrice: 11.99, dealId: "nordvpn" },
+  { id: "economist", name: "The Economist", category: "education", defaultMonthlyPrice: 22, dealId: "economist" },
+  { id: "doordash-dashpass", name: "DoorDash DashPass", category: "food", defaultMonthlyPrice: 9.99, dealId: "doordash-dashpass" },
 ];
 
 export function calculateAuditResult(
@@ -36,8 +39,9 @@ export function calculateAuditResult(
 
     const currentPrice = selection.currentMonthlyPrice;
     const deal = sub.dealId ? (dealsMap.get(sub.dealId) ?? null) : null;
-    const studentPrice = isStudent && deal ? deal.studentPrice : currentPrice;
-    const savings = currentPrice - studentPrice;
+    const rawStudentPrice = isStudent && deal ? deal.studentPrice : currentPrice;
+    const studentPrice = Math.min(rawStudentPrice, currentPrice);
+    const savings = Math.max(0, currentPrice - studentPrice);
 
     totalCurrentSpend += currentPrice;
     totalStudentSpend += studentPrice;
@@ -46,13 +50,7 @@ export function calculateAuditResult(
       applicableDeals.push(deal);
     }
 
-    breakdown.push({
-      name: sub.name,
-      currentPrice,
-      studentPrice,
-      savings,
-      deal,
-    });
+    breakdown.push({ name: sub.name, currentPrice, studentPrice, savings, deal });
   }
 
   const monthlySavings = totalCurrentSpend - totalStudentSpend;
