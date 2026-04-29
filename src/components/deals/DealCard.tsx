@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Clock, AlertCircle } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
+import BrandLogo from "./BrandLogo";
 
 interface DealCardProps {
   deal: Deal;
@@ -26,9 +27,7 @@ export default function DealCard({ deal }: DealCardProps) {
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span className="text-3xl" aria-label={deal.brand}>
-              {deal.logoEmoji}
-            </span>
+            <BrandLogo domain={deal.logoDomain} emoji={deal.logoEmoji} brand={deal.brand} />
             <div>
               <p className="font-semibold text-zinc-900 leading-tight">{deal.brand}</p>
               <p className="text-xs text-zinc-500 capitalize">{deal.category}</p>
