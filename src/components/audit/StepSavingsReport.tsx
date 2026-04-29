@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
 import { TrendingDown, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface StepSavingsReportProps {
   result: AuditResult;
-  onContinue: () => void;
 }
 
 function useCountUp(target: number, duration = 1200) {
@@ -33,22 +33,21 @@ function useCountUp(target: number, duration = 1200) {
   return value;
 }
 
-export default function StepSavingsReport({ result, onContinue }: StepSavingsReportProps) {
+export default function StepSavingsReport({ result }: StepSavingsReportProps) {
   const animatedMonthly = useCountUp(result.monthlySavings);
-  const animatedAnnual = useCountUp(result.annualSavings);
 
   if (result.monthlySavings === 0) {
     return (
       <div className="space-y-6">
         <div className="text-center py-8">
-          <p className="text-5xl mb-4">🎉</p>
+          <p className="text-5xl mb-4">&#127881;</p>
           <h2 className="text-xl font-bold text-zinc-900">You&apos;re already optimized!</h2>
           <p className="text-zinc-500 mt-2 text-sm">
             Based on your selections, you&apos;re either already claiming these discounts, or the items you selected don&apos;t have student deals available yet.
           </p>
         </div>
-        <Button onClick={onContinue} className="w-full" size="lg">
-          Get notified when new deals drop →
+        <Button asChild className="w-full" size="lg">
+          <Link href="/deals">Browse all deals &rarr;</Link>
         </Button>
       </div>
     );
@@ -63,7 +62,6 @@ export default function StepSavingsReport({ result, onContinue }: StepSavingsRep
         </p>
       </div>
 
-      {/* Big number */}
       <div className="bg-emerald-50 rounded-2xl p-6 text-center border border-emerald-100">
         <div className="flex items-center justify-center gap-2 text-emerald-700 mb-1">
           <TrendingDown className="h-5 w-5" />
@@ -73,12 +71,8 @@ export default function StepSavingsReport({ result, onContinue }: StepSavingsRep
           {formatCurrency(animatedMonthly)}
           <span className="text-2xl font-medium text-emerald-600">/mo</span>
         </p>
-        <p className="text-emerald-600 mt-2 font-semibold">
-          = {formatCurrency(animatedAnnual)} per year
-        </p>
       </div>
 
-      {/* Breakdown */}
       <Card>
         <CardContent className="p-4">
           <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
@@ -122,12 +116,9 @@ export default function StepSavingsReport({ result, onContinue }: StepSavingsRep
         </CardContent>
       </Card>
 
-      <Button onClick={onContinue} className="w-full" size="lg">
-        Send me my savings report →
+      <Button asChild className="w-full" size="lg">
+        <Link href="/deals">Claim these deals now &mdash; it&apos;s free &rarr;</Link>
       </Button>
-      <p className="text-xs text-zinc-400 text-center">
-        We&apos;ll email you this report plus step-by-step claim instructions for each deal.
-      </p>
     </div>
   );
 }

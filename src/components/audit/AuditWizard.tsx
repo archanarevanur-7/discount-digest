@@ -7,16 +7,15 @@ import { calculateAuditResult } from "@/lib/audit-data";
 import StepSubscriptions from "./StepSubscriptions";
 import StepStudentStatus from "./StepStudentStatus";
 import StepSavingsReport from "./StepSavingsReport";
-import AuditEmailCapture from "./AuditEmailCapture";
 
 interface AuditWizardProps {
   subscriptions: Subscription[];
 }
 
-const STEP_LABELS = ["Your subscriptions", "Student status", "Your savings", "Get your report"];
+const STEP_LABELS = ["Your subscriptions", "Student status", "Your savings"];
 
 export default function AuditWizard({ subscriptions }: AuditWizardProps) {
-  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+  const [step, setStep] = useState<1 | 2 | 3>(1);
   const [selections, setSelections] = useState<AuditSelection[]>([]);
   const [isStudent, setIsStudent] = useState<boolean | null>(null);
   const [result, setResult] = useState<AuditResult | null>(null);
@@ -28,8 +27,6 @@ export default function AuditWizard({ subscriptions }: AuditWizardProps) {
       const r = calculateAuditResult(selections, isStudent ?? false);
       setResult(r);
       setStep(3);
-    } else if (step === 3) {
-      setStep(4);
     }
   }
 
@@ -37,7 +34,6 @@ export default function AuditWizard({ subscriptions }: AuditWizardProps) {
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8">
-      {/* Progress */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <p className="text-sm font-medium text-zinc-900">
@@ -49,7 +45,6 @@ export default function AuditWizard({ subscriptions }: AuditWizardProps) {
         <Progress value={progress} />
       </div>
 
-      {/* Steps */}
       {step === 1 && (
         <StepSubscriptions
           subscriptions={subscriptions}
@@ -67,13 +62,7 @@ export default function AuditWizard({ subscriptions }: AuditWizardProps) {
         />
       )}
       {step === 3 && result && (
-        <StepSavingsReport result={result} onContinue={handleNext} />
-      )}
-      {step === 4 && result && (
-        <AuditEmailCapture
-          auditResult={result}
-          onSuccess={() => {}}
-        />
+        <StepSavingsReport result={result} />
       )}
     </div>
   );
