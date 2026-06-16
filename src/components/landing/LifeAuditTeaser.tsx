@@ -42,10 +42,10 @@ export default function LifeAuditTeaser() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 mb-3">
-            Quick — check what you&apos;re paying for:
+            Which of these are you already paying for?
           </h2>
           <p className="text-zinc-500">
-            Select your active subscriptions and watch the savings add up in real time.
+            Check what you have — we&apos;ll show you exactly how much you&apos;re overpaying as a student.
           </p>
         </div>
 
@@ -74,7 +74,6 @@ export default function LifeAuditTeaser() {
             })}
           </div>
 
-          {/* Live counter */}
           <div
             className={`border-t transition-all duration-300 ${
               monthly > 0 ? "bg-emerald-50 border-emerald-100" : "bg-zinc-50 border-zinc-100"
