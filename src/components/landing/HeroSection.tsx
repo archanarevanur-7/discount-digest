@@ -20,24 +20,24 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-zinc-900 leading-tight tracking-tight mb-5">
-          Every student discount.
+          You&apos;re probably overpaying
           <br />
-          <span className="text-emerald-600">In one place.</span>
+          <span className="text-emerald-600">for bills you already have.</span>
         </h1>
 
         <p className="text-lg sm:text-xl text-zinc-500 max-w-xl mx-auto mb-10">
-          See what you&apos;re overpaying and claim your discounts in minutes.
+          The 2-minute audit finds student discounts on subscriptions you&apos;re already paying for — no new apps, no signups.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-          <Button asChild size="lg" className="w-full sm:w-auto text-base px-8">
+          <Button asChild size="lg" className="w-full sm:w-auto text-base px-8 bg-emerald-600 hover:bg-emerald-700">
             <Link href="/audit">
-              See my savings
+              Audit my subscriptions
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto text-base px-8">
-            <Link href="/deals">Browse all deals</Link>
+          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto text-base px-8 text-zinc-500">
+            <Link href="/deals">Browse deals</Link>
           </Button>
         </div>
 
