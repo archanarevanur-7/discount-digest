@@ -2,7 +2,7 @@ import { Deal, DealCategory } from "@/types";
 
 export const DEALS: Deal[] = [
   {
-    id: "spotify", brand: "Spotify", logoEmoji: "🎵", category: "streaming",
+    id: "spotify", brand: "Spotify", logoEmoji: "🎵", logoDomain: "spotify.com", category: "streaming",
     headline: "50% off Premium", fullPrice: 11.99, studentPrice: 5.99, savingsPercent: 50,
     description: "Full Spotify Premium at half price. Verified through SheerID — takes under 2 minutes.",
     claimDifficulty: "easy",
@@ -10,7 +10,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.spotify.com/us/student/", tags: ["music", "audio", "entertainment"],
   },
   {
-    id: "apple-music", brand: "Apple Music", logoEmoji: "🎶", category: "streaming",
+    id: "apple-music", brand: "Apple Music", logoEmoji: "🎶", logoDomain: "apple.com", category: "streaming",
     headline: "45% off — $5.99/mo", fullPrice: 10.99, studentPrice: 5.99, savingsPercent: 45,
     description: "Student plan includes full Apple Music library. Verified via UNiDAYS.",
     claimDifficulty: "easy",
@@ -18,7 +18,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "UNiDAYS", claimUrl: "https://music.apple.com/us/student", tags: ["music", "audio", "apple"],
   },
   {
-    id: "youtube-premium", brand: "YouTube Premium", logoEmoji: "▶️", category: "streaming",
+    id: "youtube-premium", brand: "YouTube Premium", logoEmoji: "▶️", logoDomain: "youtube.com", category: "streaming",
     headline: "43% off — $7.99/mo", fullPrice: 13.99, studentPrice: 7.99, savingsPercent: 43,
     description: "Ad-free YouTube + YouTube Music. Student plan verified through SheerID.",
     claimDifficulty: "easy",
@@ -26,7 +26,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.youtube.com/premium/student", tags: ["video", "music", "google"],
   },
   {
-    id: "hulu", brand: "Hulu", logoEmoji: "📺", category: "streaming",
+    id: "hulu", brand: "Hulu", logoEmoji: "📺", logoDomain: "hulu.com", category: "streaming",
     headline: "89% off — $1.99/mo", fullPrice: 17.99, studentPrice: 1.99, savingsPercent: 89,
     description: "Full Hulu streaming library (with ads) for $1.99/month. One of the best streaming deals available to students.",
     claimDifficulty: "easy",
@@ -34,7 +34,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.hulu.com/student", tags: ["tv", "video", "movies"],
   },
   {
-    id: "tidal", brand: "Tidal", logoEmoji: "🌊", category: "streaming",
+    id: "tidal", brand: "Tidal", logoEmoji: "🌊", logoDomain: "tidal.com", category: "streaming",
     headline: "45% off — $5.99/mo", fullPrice: 10.99, studentPrice: 5.99, savingsPercent: 45,
     description: "High-fidelity lossless audio and HiRes FLAC streaming at student pricing. Verified through SheerID.",
     claimDifficulty: "easy",
@@ -42,7 +42,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://tidal.com/us/student", tags: ["music", "hifi", "audio"],
   },
   {
-    id: "amazon-prime", brand: "Amazon Prime", logoEmoji: "📦", category: "streaming",
+    id: "amazon-prime", brand: "Amazon Prime", logoEmoji: "📦", logoDomain: "amazon.com", category: "streaming",
     headline: "50% off — $7.49/mo", fullPrice: 14.99, studentPrice: 7.49, savingsPercent: 50,
     description: "Prime Video, free 2-day shipping, Prime Music, and more at half price. 6-month free trial included.",
     claimDifficulty: "easy",
@@ -50,7 +50,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.amazon.com/joinstudent", tags: ["shopping", "video", "shipping"],
   },
   {
-    id: "adobe-cc", brand: "Adobe Creative Cloud", logoEmoji: "🎨", category: "software",
+    id: "adobe-cc", brand: "Adobe Creative Cloud", logoEmoji: "🎨", logoDomain: "adobe.com", category: "software",
     headline: "64% off — $19.99/mo", fullPrice: 54.99, studentPrice: 19.99, savingsPercent: 64,
     description: "All 20+ Creative Cloud apps including Photoshop, Illustrator, Premiere, and After Effects. Biggest dollar savings on this list.",
     claimDifficulty: "medium",
@@ -58,7 +58,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.adobe.com/creativecloud/buy/students.html", tags: ["design", "video", "photo", "creative"],
   },
   {
-    id: "microsoft-365", brand: "Microsoft 365", logoEmoji: "📊", category: "software",
+    id: "microsoft-365", brand: "Microsoft 365", logoEmoji: "📊", logoDomain: "microsoft.com", category: "software",
     headline: "Free for 12 months — $0", fullPrice: 9.99, studentPrice: 0, savingsPercent: 100,
     description: "Word, Excel, PowerPoint, Teams, OneDrive (1TB), and more — free for 12 months for verified college students.",
     claimDifficulty: "easy",
@@ -66,7 +66,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.microsoft.com/en-us/microsoft-365/college-student-pricing", tags: ["productivity", "office", "microsoft"],
   },
   {
-    id: "notion", brand: "Notion Plus", logoEmoji: "📝", category: "software",
+    id: "notion", brand: "Notion Plus", logoEmoji: "📝", logoDomain: "notion.so", category: "software",
     headline: "Free Plus plan — $0/mo", fullPrice: 16, studentPrice: 0, savingsPercent: 100,
     description: "The full Notion Plus plan — unlimited blocks, unlimited file uploads — free for students. Verified with your .edu email.",
     claimDifficulty: "easy",
@@ -74,7 +74,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.notion.com/product/notion-for-education", tags: ["productivity", "notes", "workspace"],
   },
   {
-    id: "github-student", brand: "GitHub Student Pack", logoEmoji: "💻", category: "software",
+    id: "github-student", brand: "GitHub Student Pack", logoEmoji: "💻", logoDomain: "github.com", category: "software",
     headline: "Free Developer Pack — $0/mo", fullPrice: 19, studentPrice: 0, savingsPercent: 100,
     description: "GitHub Pro plus $200k+ in developer tools: free domains, cloud credits, CI/CD tools, design software, and more from 100+ partners.",
     claimDifficulty: "easy",
@@ -82,7 +82,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email + enrollment proof", claimUrl: "https://education.github.com/pack/join", tags: ["developer", "coding", "tools"],
   },
   {
-    id: "canva-pro", brand: "Canva Pro", logoEmoji: "🖌️", category: "software",
+    id: "canva-pro", brand: "Canva Pro", logoEmoji: "🖌️", logoDomain: "canva.com", category: "software",
     headline: "Free Pro — $0/mo", fullPrice: 15, studentPrice: 0, savingsPercent: 100,
     description: "Canva Pro with premium templates, brand kits, background remover, and 100GB storage — free for higher-ed students.",
     claimDifficulty: "easy",
@@ -90,7 +90,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.canva.com/education/students/", tags: ["design", "graphics", "templates"],
   },
   {
-    id: "figma", brand: "Figma Professional", logoEmoji: "✏️", category: "software",
+    id: "figma", brand: "Figma Professional", logoEmoji: "✏️", logoDomain: "figma.com", category: "software",
     headline: "Free Professional — $0/mo", fullPrice: 15, studentPrice: 0, savingsPercent: 100,
     description: "Figma's full Professional plan — unlimited projects, version history, and advanced prototyping — free for students.",
     claimDifficulty: "easy",
@@ -98,7 +98,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.figma.com/education/apply", tags: ["design", "ui", "prototyping"],
   },
   {
-    id: "jetbrains", brand: "JetBrains All Products", logoEmoji: "⚡", category: "software",
+    id: "jetbrains", brand: "JetBrains All Products", logoEmoji: "⚡", logoDomain: "jetbrains.com", category: "software",
     headline: "Free all-products license — $0", fullPrice: 24.90, studentPrice: 0, savingsPercent: 100,
     description: "Every JetBrains IDE free — IntelliJ IDEA, PyCharm, WebStorm, DataGrip, CLion, GoLand, and more. Renewable annually while enrolled.",
     claimDifficulty: "easy",
@@ -106,7 +106,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.jetbrains.com/student/", tags: ["developer", "ide", "coding", "python", "javascript"],
   },
   {
-    id: "nordvpn", brand: "NordVPN", logoEmoji: "🛡️", category: "software",
+    id: "nordvpn", brand: "NordVPN", logoEmoji: "🛡️", logoDomain: "nordvpn.com", category: "software",
     headline: "71% off — $3.49/mo", fullPrice: 11.99, studentPrice: 3.49, savingsPercent: 71,
     description: "Top-rated VPN for privacy, security, and accessing geo-restricted content — student deal through UNiDAYS.",
     claimDifficulty: "easy",
@@ -114,7 +114,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "UNiDAYS", claimUrl: "https://www.myunidays.com/US/en-US/partners/nordvpn/view", tags: ["vpn", "security", "privacy"],
   },
   {
-    id: "1password", brand: "1Password", logoEmoji: "🔑", category: "software",
+    id: "1password", brand: "1Password", logoEmoji: "🔑", logoDomain: "1password.com", category: "software",
     headline: "Free via Student Pack — $0", fullPrice: 2.99, studentPrice: 0, savingsPercent: 100,
     description: "The best password manager, free through the GitHub Student Developer Pack. Works on all devices — Mac, Windows, iOS, Android.",
     claimDifficulty: "easy",
@@ -122,7 +122,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://1password.com/students/", tags: ["password", "security", "productivity"],
   },
   {
-    id: "unity-student", brand: "Unity Student Plan", logoEmoji: "🎮", category: "software",
+    id: "unity-student", brand: "Unity Student Plan", logoEmoji: "🎮", logoDomain: "unity.com", category: "software",
     headline: "Free Student Plan — $0", fullPrice: 185, studentPrice: 0, savingsPercent: 100,
     description: "Unity's game engine with Student Plan features — free for enrolled students. Build games, simulations, AR/VR, and interactive experiences.",
     claimDifficulty: "easy",
@@ -130,7 +130,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://unity.com/products/unity-student", tags: ["game-dev", "3d", "ar", "vr"],
   },
   {
-    id: "grammarly", brand: "Grammarly Premium", logoEmoji: "✍️", category: "software",
+    id: "grammarly", brand: "Grammarly Premium", logoEmoji: "✍️", logoDomain: "grammarly.com", category: "software",
     headline: "25% off via UNiDAYS", fullPrice: 30, studentPrice: 22.50, savingsPercent: 25,
     description: "25% off Grammarly Premium via UNiDAYS. Also worth checking if your university has a free institutional license — many do.",
     claimDifficulty: "easy",
@@ -138,7 +138,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "UNiDAYS", claimUrl: "https://www.myunidays.com/US/en-US/partners/grammarly/view", tags: ["writing", "productivity", "grammar"],
   },
   {
-    id: "expressvpn", brand: "ExpressVPN", logoEmoji: "🔒", category: "software",
+    id: "expressvpn", brand: "ExpressVPN", logoEmoji: "🔒", logoDomain: "expressvpn.com", category: "software",
     headline: "69% off + 3 months free", fullPrice: 12.95, studentPrice: 3.99, savingsPercent: 69,
     description: "Up to 69% off a 1-year subscription plus 3 extra months free — verified directly through UNiDAYS.",
     claimDifficulty: "easy",
@@ -146,7 +146,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "UNiDAYS", claimUrl: "https://www.myunidays.com/US/en-US/partners/expressvpn/view", tags: ["vpn", "security", "privacy"],
   },
   {
-    id: "autodesk", brand: "Autodesk Suite", logoEmoji: "📐", category: "software",
+    id: "autodesk", brand: "Autodesk Suite", logoEmoji: "📐", logoDomain: "autodesk.com", category: "software",
     headline: "Free 1-year license — $0", fullPrice: 270, studentPrice: 0, savingsPercent: 100,
     description: "AutoCAD, Revit, Fusion 360, Maya, 3ds Max — the full Autodesk suite free for students for 1 year, renewable annually.",
     claimDifficulty: "medium",
@@ -154,7 +154,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.autodesk.com/education/edu-software/overview", tags: ["cad", "3d", "engineering", "architecture"],
   },
   {
-    id: "nytimes", brand: "New York Times", logoEmoji: "📰", category: "education",
+    id: "nytimes", brand: "New York Times", logoEmoji: "📰", logoDomain: "nytimes.com", category: "education",
     headline: "94% off — $1/mo", fullPrice: 17, studentPrice: 1, savingsPercent: 94,
     description: "Full NYT digital access — news, cooking, games, and Wirecutter — for $1/month for up to 4 years.",
     claimDifficulty: "easy",
@@ -162,7 +162,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.nytimes.com/subscription/students", tags: ["news", "reading", "media"],
   },
   {
-    id: "wsj", brand: "Wall Street Journal", logoEmoji: "📈", category: "education",
+    id: "wsj", brand: "Wall Street Journal", logoEmoji: "📈", logoDomain: "wsj.com", category: "education",
     headline: "90% off — $4/mo", fullPrice: 38.99, studentPrice: 4, savingsPercent: 90,
     description: "Full WSJ digital access — essential for business, finance, and economics students. Verified via SheerID.",
     claimDifficulty: "easy",
@@ -170,7 +170,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.wsj.com/student", tags: ["news", "finance", "business"],
   },
   {
-    id: "coursera-plus", brand: "Coursera Plus", logoEmoji: "🎓", category: "education",
+    id: "coursera-plus", brand: "Coursera Plus", logoEmoji: "🎓", logoDomain: "coursera.org", category: "education",
     headline: "40% off first 3 months", fullPrice: 59, studentPrice: 35.40, savingsPercent: 40,
     description: "40% off Coursera Plus for your first 3 months — thousands of courses, professional certificates, and specializations.",
     claimDifficulty: "easy",
@@ -178,7 +178,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "UNiDAYS", claimUrl: "https://www.myunidays.com/US/en-US/partners/coursera/view", tags: ["courses", "certificates", "learning"],
   },
   {
-    id: "datacamp", brand: "DataCamp", logoEmoji: "📊", category: "education",
+    id: "datacamp", brand: "DataCamp", logoEmoji: "📊", logoDomain: "datacamp.com", category: "education",
     headline: "Free via Student Pack — $0/mo", fullPrice: 25, studentPrice: 0, savingsPercent: 100,
     description: "Learn Python, R, SQL, data science, and machine learning — free through the GitHub Student Developer Pack. 400+ courses.",
     claimDifficulty: "easy",
@@ -186,7 +186,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "GitHub Student Pack", claimUrl: "https://www.datacamp.com/github-students", tags: ["data-science", "python", "machine-learning", "sql"],
   },
   {
-    id: "economist", brand: "The Economist", logoEmoji: "🌍", category: "education",
+    id: "economist", brand: "The Economist", logoEmoji: "🌍", logoDomain: "economist.com", category: "education",
     headline: "68% off — $7/mo", fullPrice: 22, studentPrice: 7, savingsPercent: 68,
     description: "Full digital access to The Economist — global politics, economics, business, and culture. Steep student discount for up to 2 years.",
     claimDifficulty: "easy",
@@ -194,7 +194,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.economist.com/student", tags: ["news", "economics", "business", "global"],
   },
   {
-    id: "calm", brand: "Calm Premium", logoEmoji: "🧘", category: "health",
+    id: "calm", brand: "Calm Premium", logoEmoji: "🧘", logoDomain: "calm.com", category: "health",
     headline: "77% off — $3.50/mo", fullPrice: 14.99, studentPrice: 3.50, savingsPercent: 77,
     description: "The full Calm app — sleep stories, guided meditations, and stress relief — at a steep student rate. US students 18+ only.",
     claimDifficulty: "easy",
@@ -202,7 +202,7 @@ export const DEALS: Deal[] = [
     verificationMethod: ".edu email", claimUrl: "https://www.calm.com/students", tags: ["mental health", "sleep", "meditation"],
   },
   {
-    id: "headspace", brand: "Headspace", logoEmoji: "🧠", category: "health",
+    id: "headspace", brand: "Headspace", logoEmoji: "🧠", logoDomain: "headspace.com", category: "health",
     headline: "94% off — $9.99/year", fullPrice: 12.99, studentPrice: 0.83, savingsPercent: 94,
     description: "Guided meditation, focus music, and sleep content — $9.99 for a full year (not month). Verified directly through SheerID.",
     claimDifficulty: "easy",
@@ -210,7 +210,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "SheerID", claimUrl: "https://www.headspace.com/studentplan", tags: ["mental health", "meditation", "focus"],
   },
   {
-    id: "peloton", brand: "Peloton App", logoEmoji: "🚴", category: "health",
+    id: "peloton", brand: "Peloton App", logoEmoji: "🚴", logoDomain: "onepeloton.com", category: "health",
     headline: "46% off — $6.99/mo", fullPrice: 12.99, studentPrice: 6.99, savingsPercent: 46,
     description: "Full Peloton app — cycling, running, strength, yoga, meditation — no equipment required. Verified via ID.me.",
     claimDifficulty: "medium",
@@ -218,7 +218,7 @@ export const DEALS: Deal[] = [
     verificationMethod: "ID.me", claimUrl: "https://www.onepeloton.com/student", tags: ["fitness", "workout", "exercise"],
   },
   {
-    id: "doordash-dashpass", brand: "DoorDash DashPass", logoEmoji: "🍕", category: "food",
+    id: "doordash-dashpass", brand: "DoorDash DashPass", logoEmoji: "🍕", logoDomain: "doordash.com", category: "food",
     headline: "50% off — $4.99/mo", fullPrice: 9.99, studentPrice: 4.99, savingsPercent: 50,
     description: "DashPass for students — free delivery, reduced service fees, and exclusive restaurant offers. Saves on every order.",
     claimDifficulty: "easy",
